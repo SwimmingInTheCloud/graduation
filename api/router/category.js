@@ -1,0 +1,13 @@
+const express = require('express');
+const router = express.Router();
+const util=require('../util/util');
+const categoryControl=require('../db/controller/categoryController');
+router.post('/getcategoryproduct',categoryControl.getProductByCategory);
+router.post('/changeprostate',util.verify,categoryControl.changeProState);
+router.post('/getnewpro',categoryControl.getNewPro);
+router.post('/getallcategory',categoryControl.getAllCategory);
+router.post('/delcategoryproduct',util.verify,categoryControl.delCategoryProduct);
+router.post('/addcategoryproduct',util.verify,categoryControl.addCategoryProduct);
+router.post('/changecategoryproduct',util.verify,categoryControl.changeCategoryProduct);
+router.post('/getprobyid',categoryControl.getProById);
+module.exports = router;

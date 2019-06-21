@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const util=require('../util/util');
+const orderControl=require('../db/controller/orderController');
+router.post('/getorders',orderControl.getOrders);
+router.post('/changeordersend',orderControl.changeOrderSend);
+router.post('/delorder',util.verify,orderControl.delOrder);
+router.post('/addorder',orderControl.addOrder);
+router.post('/getorderbyusername',orderControl.getOrderByUserName);
+module.exports = router;

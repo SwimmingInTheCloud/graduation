@@ -1,0 +1,10 @@
+const express=require('express');
+const util=require('../util/util');
+const router=express.Router();
+const newProductControl=require('../db/controller/newProductController');
+router.post('/getNewProduct',newProductControl.getNewProduct);
+router.post('/delNewProduct',newProductControl.delNewProduct);
+router.post('/addNewProduct',newProductControl.addNewProduct);
+router.post('/changeNewProduct',newProductControl.changeNewProduct);
+router.post('/findByIdNewProduct',newProductControl.findByIdNewProduct);
+module.exports=router;

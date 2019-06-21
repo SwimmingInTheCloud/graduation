@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<input type="file" id="file"><button onclick="uploadImg()">上传</button>
+<br>
+<img src="" alt="" id="img">
+</body>
+<script>
+var url="http://localhost:3000";
+function uploadImg() {
+    var file=($("#file")[0].files[0]);
+    console.log(file)
+    var formData=new FormData();
+    formData.append('uploadimg',file);
+    $.ajax({
+        url:url+'/admin/upload/img',
+        type:"POST",
+        data:formData,
+        cache:false,
+        contentType:false,
+        processData:false,
+        success:function (res) {
+            if(res.err===-1){
+                alert(res.msg)
+            }else if(res.err===0){
+                alert(res.msg);
+                $("#img").attr('src',url+res.data)
+            }
+        }
+    })
+}
+</script>
+</html>
